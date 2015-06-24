@@ -503,6 +503,15 @@ $.fn.popup = function(parameters) {
               offstage  = {},
               offstagePositions = []
             ;
+            if (settings.boundary) {
+              var $bound = $(settings.boundary)
+              boundary = {
+                top    : $bound.offset().top,
+                bottom : $bound.offset().top + $bound.height(),
+                left   : $bound.offset().left,
+                right  : $bound.offset().left + $bound.width()
+              }
+            }
             position = position || false;
             if(popup.offset && position) {
               module.verbose('Checking if outside viewable area', popup.offset);
